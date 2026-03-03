@@ -1,0 +1,14 @@
+COPYING.TXT
+COPYING.txt
+LICENSE
+README.md
+buildVars.py
+pyproject.toml
+readme.md
+addonTemplate.egg-info/PKG-INFO
+addonTemplate.egg-info/SOURCES.txt
+addonTemplate.egg-info/dependency_links.txt
+addonTemplate.egg-info/requires.txt
+addonTemplate.egg-info/top_level.txt
+addon/globalPlugins/internetSpeedChecker/__init__.py
+addon/globalPlugins/internetSpeedChecker/speed_engine.py
