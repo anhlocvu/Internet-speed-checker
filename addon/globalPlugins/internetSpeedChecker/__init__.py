@@ -15,7 +15,7 @@ import sys
 import tones
 import time
 import api
-from gui.settingsDialogs import SettingsPanel, NVDASettingsDialog
+from gui.settingsDialogs import SettingsPanel
 
 # Import our engine and config
 from . import speed_engine
@@ -105,15 +105,20 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
     def __init__(self):
         super(GlobalPlugin, self).__init__()
-        if SpeedCheckerSettingsPanel not in NVDASettingsDialog.categoryClasses:
-            NVDASettingsDialog.categoryClasses.append(SpeedCheckerSettingsPanel)
+        try:
+            from gui.settingsDialogs import NVDASettingsDialog
+            if SpeedCheckerSettingsPanel not in NVDASettingsDialog.categoryClasses:
+                NVDASettingsDialog.categoryClasses.append(SpeedCheckerSettingsPanel)
+        except Exception as e:
+            log.error(f"Internet Speed Checker: Error registering settings panel: {e}")
         self._is_checking = False
 
     def terminate(self):
         try:
+            from gui.settingsDialogs import NVDASettingsDialog
             NVDASettingsDialog.categoryClasses.remove(SpeedCheckerSettingsPanel)
-        except:
-            pass
+        except Exception as e:
+            log.error(f"Internet Speed Checker: Error unregistering settings panel: {e}")
 
     @script(
         description=_("Checks the current internet speed."),

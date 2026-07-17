@@ -7,16 +7,22 @@ import xml.etree.ElementTree as ET
 import math
 import threading
 from queue import Queue
+import ssl
 
 class SpeedtestEngine:
     def __init__(self):
         self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) speedtest-cli/2.1.3'}
+        # Bypass SSL verification to ensure compatibility across all network providers/ISPs
+        try:
+            self.ssl_context = ssl._create_unverified_context()
+        except AttributeError:
+            self.ssl_context = None
         
     def get_config(self):
         """Fetches Ookla configuration and client info."""
         try:
             req = urllib.request.Request("https://www.speedtest.net/speedtest-config.php", headers=self.headers)
-            with urllib.request.urlopen(req, timeout=5) as res:
+            with urllib.request.urlopen(req, timeout=5, context=self.ssl_context) as res:
                 root = ET.fromstring(res.read())
                 client = root.find('client').attrib
                 return client
@@ -28,7 +34,7 @@ class SpeedtestEngine:
         try:
             # Get nearby servers
             req = urllib.request.Request("https://c.speedtest.net/speedtest-servers-static.php", headers=self.headers)
-            with urllib.request.urlopen(req, timeout=5) as res:
+            with urllib.request.urlopen(req, timeout=5, context=self.ssl_context) as res:
                 root = ET.fromstring(res.read())
                 servers = root.findall('.//server')
                 
@@ -56,7 +62,7 @@ class SpeedtestEngine:
                 if time.perf_counter() - start_time > duration: break
                 url = f"{base_url}/random{size}x{size}.jpg"
                 req = urllib.request.Request(url, headers=self.headers)
-                with urllib.request.urlopen(req, timeout=10) as res:
+                with urllib.request.urlopen(req, timeout=10, context=self.ssl_context) as res:
                     total_received += len(res.read())
             
             elapsed = time.perf_counter() - start_time
@@ -74,7 +80,7 @@ class SpeedtestEngine:
         try:
             while time.perf_counter() - start_time < duration:
                 req = urllib.request.Request(server_url, data=data, method='POST', headers=self.headers)
-                with urllib.request.urlopen(req, timeout=10) as res:
+                with urllib.request.urlopen(req, timeout=10, context=self.ssl_context) as res:
                     res.read()
                 total_sent += len(data)
                 
@@ -91,10 +97,15 @@ def run_test():
     # Measure Ping to the best server
     ping = "N/A"
     try:
-        host = server['url'].split('/')[2].split(':')[0]
+        # Dynamically extract host and port from server URL to ensure connectivity across all ISPs
+        url = server['url']
+        host_parts = url.split('/')[2].split(':')
+        host = host_parts[0]
+        port = int(host_parts[1]) if len(host_parts) > 1 else (443 if url.startswith('https') else 80)
+        
         import socket
         start = time.perf_counter()
-        s = socket.create_connection((host, 80), timeout=3)
+        s = socket.create_connection((host, port), timeout=3)
         s.close()
         ping = int((time.perf_counter() - start) * 1000)
     except:
