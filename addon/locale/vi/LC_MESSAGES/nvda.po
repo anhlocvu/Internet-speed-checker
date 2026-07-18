@@ -1,0 +1,148 @@
+# Vietnamese translation for internet_speed_checker.
+# Copyright (C) 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: internet_speed_checker 1.0.4\n"
+"POT-Creation-Date: 2026-07-18 18:14+0700\n"
+"PO-Revision-Date: 2026-07-18 18:30+0700\n"
+"Last-Translator: Lc_Boy <lcboy@example.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+msgid "Internet Speed Checker"
+msgstr "Bộ kiểm tra tốc độ Internet"
+
+msgid "&Speed unit:"
+msgstr "&Đơn vị tốc độ:"
+
+msgid "Megabit (Mbps)"
+msgstr "Megabit (Mbps)"
+
+msgid "Megabyte (MB/s)"
+msgstr "Megabyte (MB/s)"
+
+msgid "Internet Speed Test Results"
+msgstr "Kết quả kiểm tra tốc độ Internet"
+
+msgid "&Copy Results"
+msgstr "&Sao chép kết quả"
+
+msgid "&Close"
+msgstr "Đón&g"
+
+msgid "Failed to open clipboard."
+msgstr "Không thể mở bộ nhớ tạm."
+
+msgid "The result has been copied to the clipboard"
+msgstr "Kết quả đã được sao chép vào bộ nhớ tạm"
+
+msgid "Error copying to clipboard."
+msgstr "Lỗi khi sao chép vào bộ nhớ tạm."
+
+msgid "Internet Speed Test Details"
+msgstr "Chi tiết kiểm tra tốc độ Internet"
+
+msgid "&Copy Details"
+msgstr "&Sao chép chi tiết"
+
+msgid "&Go Back"
+msgstr "&Quay lại"
+
+msgid "Internet Speed Checker History"
+msgstr "Lịch sử kiểm tra tốc độ Internet"
+
+msgid "&Open"
+msgstr "&Mở"
+
+msgid "&Delete All History"
+msgstr "&Xóa toàn bộ lịch sử"
+
+msgid "No history, all check history will be saved here."
+msgstr "Không có lịch sử, mọi lịch sử kiểm tra sẽ được lưu tại đây."
+
+msgid "Checked at: {timestamp}"
+msgstr "Đã kiểm tra lúc: {timestamp}"
+
+msgid "All history has been deleted."
+msgstr "Đã xóa toàn bộ lịch sử."
+
+msgid "Internet Speed Checker &History..."
+msgstr "&Lịch sử kiểm tra tốc độ Internet..."
+
+msgid "View the history of internet speed tests."
+msgstr "Xem lịch sử các lần kiểm tra tốc độ internet."
+
+msgid "Checks the current internet speed."
+msgstr "Kiểm tra tốc độ internet hiện tại."
+
+msgid "Internet speed check is already in progress."
+msgstr "Đang tiến hành kiểm tra tốc độ internet."
+
+msgid "Internet speed checking..."
+msgstr "Đang kiểm tra tốc độ internet..."
+
+msgid "Opens the internet speed check history."
+msgstr "Mở lịch sử kiểm tra tốc độ internet."
+
+msgid "Error occurred while checking internet speed: {error}"
+msgstr "Đã xảy ra lỗi khi kiểm tra tốc độ internet: {error}"
+
+msgid "An add-on to check your internet speed (download, upload, ping) with NVDA."
+msgstr "Add-on giúp kiểm tra tốc độ internet (tải xuống, tải lên, ping) với NVDA."
+
+msgid ""
+"--- Internet Speed Test Report ---\n"
+"\n"
+"Time: {ts}\n"
+"Download Speed: {dl_val:.2f} {unit}\n"
+"Upload Speed: {ul_val:.2f} {unit}\n"
+"Ping: {ping} ms\n"
+"\n"
+"Location: {loc}\n"
+"ISP: {isp}\n"
+"Client IP: {ip}\n"
+"\n"
+"------------------------------------"
+msgstr ""
+"--- Báo cáo kiểm tra tốc độ Internet ---\n"
+"\n"
+"Thời gian: {ts}\n"
+"Tốc độ tải xuống: {dl_val:.2f} {unit}\n"
+"Tốc độ tải lên: {ul_val:.2f} {unit}\n"
+"Ping: {ping} ms\n"
+"\n"
+"Địa điểm: {loc}\n"
+"Nhà mạng (ISP): {isp}\n"
+"IP khách: {ip}\n"
+"\n"
+"------------------------------------"
+
+msgid ""
+"--- Internet Speed Test Report ---\n"
+"\n"
+"Download Speed: {dl_val:.2f} {unit}\n"
+"Upload Speed: {ul_val:.2f} {unit}\n"
+"Ping: {ping} ms\n"
+"\n"
+"Location: {loc}\n"
+"ISP: {isp}\n"
+"Client IP: {ip}\n"
+"\n"
+"------------------------------------"
+msgstr ""
+"--- Báo cáo kiểm tra tốc độ Internet ---\n"
+"\n"
+"Tốc độ tải xuống: {dl_val:.2f} {unit}\n"
+"Tốc độ tải lên: {ul_val:.2f} {unit}\n"
+"Ping: {ping} ms\n"
+"\n"
+"Địa điểm: {loc}\n"
+"Nhà mạng (ISP): {isp}\n"
+"IP khách: {ip}\n"
+"\n"
+"------------------------------------"

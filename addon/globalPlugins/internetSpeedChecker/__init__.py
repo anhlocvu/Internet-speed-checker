@@ -90,7 +90,7 @@ class SpeedResultsDialog(wx.Dialog):
             wx.TheClipboard.Close()
             
             # Announce the specific English phrase as requested
-            ui.message("The result has been copied to the clipboard")
+            ui.message(_("The result has been copied to the clipboard"))
         except Exception as e:
             log.error(f"Internet Speed Checker copy error: {e}")
             ui.message(_("Error copying to clipboard."))
@@ -114,16 +114,18 @@ class SpeedHistoryDetailDialog(wx.Dialog):
         ip = entry.get('ip', 'Unknown')
         ts = entry.get('timestamp', 'Unknown')
         
-        self.details_text = (
+        self.details_text = _(
             "--- Internet Speed Test Report ---\n\n"
-            f"Time: {ts}\n"
-            f"Download Speed: {dl_val:.2f} {unit}\n"
-            f"Upload Speed: {ul_val:.2f} {unit}\n"
-            f"Ping: {ping} ms\n\n"
-            f"Location: {loc}\n"
-            f"ISP: {isp}\n"
-            f"Client IP: {ip}\n\n"
+            "Time: {ts}\n"
+            "Download Speed: {dl_val:.2f} {unit}\n"
+            "Upload Speed: {ul_val:.2f} {unit}\n"
+            "Ping: {ping} ms\n\n"
+            "Location: {loc}\n"
+            "ISP: {isp}\n"
+            "Client IP: {ip}\n\n"
             "------------------------------------"
+        ).format(
+            ts=ts, dl_val=dl_val, unit=unit, ul_val=ul_val, ping=ping, loc=loc, isp=isp, ip=ip
         )
         
         mainSizer = wx.BoxSizer(wx.VERTICAL)
@@ -160,7 +162,7 @@ class SpeedHistoryDetailDialog(wx.Dialog):
             data.SetText(self.details_text)
             wx.TheClipboard.SetData(data)
             wx.TheClipboard.Close()
-            ui.message("The result has been copied to the clipboard")
+            ui.message(_("The result has been copied to the clipboard"))
         except Exception as e:
             log.error(f"Internet Speed Checker history details copy error: {e}")
             ui.message(_("Error copying to clipboard."))
@@ -241,7 +243,7 @@ class SpeedHistoryDialog(wx.Dialog):
     def onDeleteAll(self, event):
         history.clear_history()
         self.loadHistoryData()
-        ui.message("All history has been deleted.")
+        ui.message(_("All history has been deleted."))
         self.historyList.SetFocus()
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -372,15 +374,19 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
             )
             
             # Formatting results
-            formatted_results = (
+            formatted_results = _(
                 "--- Internet Speed Test Report ---\n\n"
-                f"Download Speed: {dl_val:.2f} {unit}\n"
-                f"Upload Speed: {ul_val:.2f} {unit}\n"
-                f"Ping: {results.get('ping', 'N/A')} ms\n\n"
-                f"Location: {results.get('location', 'Unknown')}\n"
-                f"ISP: {results.get('isp', 'Unknown')}\n"
-                f"Client IP: {results.get('ip', 'Unknown')}\n\n"
+                "Download Speed: {dl_val:.2f} {unit}\n"
+                "Upload Speed: {ul_val:.2f} {unit}\n"
+                "Ping: {ping} ms\n\n"
+                "Location: {loc}\n"
+                "ISP: {isp}\n"
+                "Client IP: {ip}\n\n"
                 "------------------------------------"
+            ).format(
+                dl_val=dl_val, unit=unit, ul_val=ul_val, ping=results.get('ping', 'N/A'),
+                loc=results.get('location', 'Unknown'), isp=results.get('isp', 'Unknown'),
+                ip=results.get('ip', 'Unknown')
             )
             
             self._is_checking = False
