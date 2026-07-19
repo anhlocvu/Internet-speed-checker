@@ -2,7 +2,6 @@
 - THE ISSUE OF INCORRECT SERVER DETECTION HAS BEEN FIXED WHEN YOU CHECK YOUR INTERNET SPEED.
 - vietnamese translation has been updated.
 
-## 1.0.4
 - add vietnamese translation
 The Vietnamese translation has been released and revised to align with specialized terminology.
 - Added check history dialog
