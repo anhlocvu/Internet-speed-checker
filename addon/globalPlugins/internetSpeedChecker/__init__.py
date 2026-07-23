@@ -347,7 +347,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
     def _beep_loop(self):
         while self._is_checking:
             tones.beep(500, 50)
-            time.sleep(0.7)
+            time.sleep(0.5)
 
     def _run_speed_test(self):
         try:
@@ -390,7 +390,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
             )
             
             self._is_checking = False
-            tones.beep(1000, 500)
+            tones.beep(1000, 200)
             wx.CallAfter(self._show_results, formatted_results)
             
         except Exception as e:
